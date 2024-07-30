@@ -4,25 +4,22 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const isProduction = process.env.NODE_ENV == 'production';
-
-const config = {
+module.exports = {
+    mode: 'development',
     entry: './src/index.js',
     output: {
+        filename: 'index.js',
         path: path.resolve(__dirname, 'dist'),
-        filename: 'index_bundle.js',
     },
     devServer: {
-        open: true,
-        host: 'localhost',
+        static: path.resolve(__dirname, 'dist'),
+        port: 8080,
+        hot: true,
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: 'index.html',
         }),
-
-        // Add your plugins here
-        // Learn more about plugins from https://webpack.js.org/configuration/plugins/
     ],
     module: {
         rules: [
@@ -39,13 +36,4 @@ const config = {
             // Learn more about loaders from https://webpack.js.org/loaders/
         ],
     },
-};
-
-module.exports = () => {
-    if (isProduction) {
-        config.mode = 'production';
-    } else {
-        config.mode = 'development';
-    }
-    return config;
 };
