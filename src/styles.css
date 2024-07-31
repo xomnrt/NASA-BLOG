@@ -2,9 +2,3 @@ body {
     background: #f0f0f0;
     margin: 0;
 }
-
-.box {
-    background: radial-gradient(circle at bottom right, transparent 60px, #000 60px);
-    height: 150px;
-    width: 250px;
-}

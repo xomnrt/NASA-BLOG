@@ -10,6 +10,7 @@ module.exports = {
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, 'dist'),
+        assetModuleFilename: 'images/[name][ext][query]',
     },
     devServer: {
         static: path.resolve(__dirname, 'dist'),
@@ -34,6 +35,14 @@ module.exports = {
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
+            },
+            {
+                test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+                type: 'asset/inline',
             },
 
             // Add your rules for custom modules here
